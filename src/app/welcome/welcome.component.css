@@ -1,0 +1,16 @@
+header{
+    background-position: center;
+    background-size: cover;
+    height: 70vh;
+    /* filter: brightness(50%);
+    background-attachment: fixed; */
+}
+
+.tag{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+
+

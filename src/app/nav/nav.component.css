@@ -1,0 +1,7 @@
+li{
+    font-size: 18px;
+    font-weight: bold;
+}
+.navbar a:hover{
+    color: green !important; 
+}

@@ -1,0 +1,23 @@
+<h1 class="text-center">My Tasks</h1>
+<table *ngIf ="tasks.length > 0" class="table table-responsive-md text-primary mx-2">
+    <thead class="thead-light">
+        <tr>
+            <th>Task</th>
+            <th>Task Description</th>
+            <th>Started</th>
+            <th>Completed</th>
+            <th>Update Task</th>
+            <th>Delete Task</th>
+        </tr>
+    </thead>
+    <tbody *ngFor = "let task of tasks">
+        <tr>
+            <td class="font-weight-bold">{{task.name}}</td>
+            <td class="font-italic">{{task.description}}</td>
+            <td>{{ task.started}}</td>
+            <td>{{ task.complete }}</td>
+            <td ><a [routerLink]="['/tasks',task._id,'add']" class="btn btn-info">Update Task</a></td>
+            <td (click)="deleteTask(task)"><a class="btn btn-dark" href="">Delete</a></td>
+        </tr>
+    </tbody>
+</table>

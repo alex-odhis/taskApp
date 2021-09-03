@@ -1,0 +1,80 @@
+<div class="card mx-3 mb-3">
+    <div class="card-header text-center text-success">
+        <h3>{{ pageTitle }}</h3>
+    </div>
+    <div class="card-body">
+        <h4 class="text-primary">Basic Task Information</h4>
+
+        <form novalidate (ngSubmit)="saveTask()" [formGroup]="addTaskForm">
+            <div class="form-group row mb-2">
+                <label class="col-form-label col-sm-2" for="name">Task Name</label>
+                <div class="col-sm-8">
+                    <input class="form-control" type="text" id="name" placeholder="Task Name"
+                        formControlName="name"
+                        [ngClass]="{'is-invalid':(addTaskForm.get('name').touched || addTaskForm.get('name').dirty) && !addTaskForm.get('name').valid}">
+                    <span class="invalid-feedback">
+                        <span *ngIf="addTaskForm.get('name').errors?.required">Please enter the Task Name</span>
+                    </span>
+                </div>
+            </div>
+            <div class="form-group row mb-2">
+                <label class="col-form-label col-sm-2" for="description">Task Description</label>
+                <div class="col-sm-8">
+                    <textarea class="form-control" type="text" id="description" placeholder="Task Description"
+                        formControlName="description"
+                        [ngClass]="{'is-invalid': (addTaskForm.get('description').touched || addTaskForm.get('description').dirty) && !addTaskForm.get('description').valid}"></textarea>
+
+                    <span class="invalid-feedback">
+                        <span *ngIf="addTaskForm.get('description').errors?.required">Please writer a Product
+                            description</span>
+                    </span>
+                </div>
+            </div>
+            <div class="form-group row mb-2">
+                <label class="col-form-label col-sm-2" for="started">Started</label>
+                <div class="col-sm-8">
+                    <div class="form-check form-check-inline">
+                        <label class="form-check-label" for="">
+                            <input class="form-check-input" type="radio" value="true" formControlName= "started">Yes
+                        </label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <label class="form-check-label" for="">
+                            <input class="form-check-input" type="radio" value="false" formControlName="started">No
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row mb-2">
+                <label class="col-form-label col-sm-2" for="started">Complete</label>
+                <div class="col-sm-8">
+                    <div class="form-check form-check-inline">
+                        <label class="form-check-label" for="">
+                            <input class="form-check-input" type="radio" value= "true" formControlName="complete">Yes
+                        </label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <label class="form-check-label" for="">
+                            <input class="form-check-input" type="radio" value="false" formControlName="complete">No
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row mb-2">
+                <div class="offset-md-2 col-md-4">
+                    <button class="btn btn-success mr-3" type="submit"
+                        [title]="addTaskForm.valid ? 'Save your entered data' : 'Disabled until the form data is valid'"
+                        style="width:80px" [disabled]="!addTaskForm.valid">
+                        Save
+                    </button>
+                    <button class="btn btn-secondary mr-3" type="cancel" (click)="onBack()" style="width:80px">
+                        <i class="fa fa-arrow-left">Back</i>
+                    </button>
+                    <button class="btn btn-dark mr-3" type="cancel" (click)="onDelete()" style="width:80px">
+                        Delete
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
