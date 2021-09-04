@@ -2,13 +2,14 @@ import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable, of, throwError } from "rxjs";
 import { catchError, map, tap } from "rxjs/operators";
+import { environment } from "src/environments/environment";
 
 @Injectable({
     providedIn: 'root'
 })
 
 export class TasksService {
-    tasksUrl: string = 'http://localhost:3000/tasks'
+    tasksUrl: string = '/tasks'
     constructor(
         private http: HttpClient
     ){}

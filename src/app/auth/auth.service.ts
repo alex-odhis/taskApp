@@ -8,9 +8,9 @@ import { catchError, tap } from "rxjs/operators";
 })
 export class AuthService {
 
-    private _signUpUrl = "http://localhost:3000/users";
-    private _loginUrl = "http://localhost:3000/users/login";
-    private _logoutUrl = "http://localhost:3000/users/logout";
+    private _signUpUrl = `/users`;
+    private _loginUrl = `/users/login`;
+    private _logoutUrl = `/users/logout`;
     constructor(private http: HttpClient) { }
 
     signIn(user): Observable<any> {
