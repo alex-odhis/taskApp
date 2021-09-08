@@ -22,8 +22,7 @@ export class AddHeaderInterceptor implements HttpInterceptor {
         .pipe(
             tap(event=> {
                 if (event.type === HttpEventType.Response) {
-                    console.log(event.body);
-                    
+                    console.log(event.body);   
                 }
             })
         )

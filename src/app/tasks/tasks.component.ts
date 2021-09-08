@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
-import { AuthService } from "../auth/auth.service";
+import { EMPTY, of } from "rxjs";
+import { catchError } from "rxjs/operators";
 import { TasksService } from "./tasks.service";
 
 @Component({
@@ -10,19 +11,18 @@ import { TasksService } from "./tasks.service";
     styleUrls: ['./tasks.component.css']
 })
 
-export class TasksComponent implements OnInit{
-    tasks: any[] = []
+export class TasksComponent{
     errorMessage = ''
 
     constructor(private tasksService: TasksService,
                 private router: Router) {}
 
-    ngOnInit(): void {
-        this.tasksService.getTasks().subscribe({
-            next: data => this.tasks = data,
-            error: err => this.errorMessage = err
-        }) 
-    }
+    tasks$ = this.tasksService.tasks$
+        .pipe( catchError(error => {
+                this.errorMessage = error;
+                return EMPTY;
+            })
+        );
 
     deleteTask(task): void {
         if (+task._id === 0) {

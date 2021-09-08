@@ -61,12 +61,11 @@ export class AddTaskComponent implements OnInit {
 
                 if (this.addTaskForm) {
                     this.addTaskForm.reset();
-
                     this.addTaskForm.patchValue({
                         name: this.task.name,
                         description: this.task.description,
                         started: this.task.started,
-                        complete: this.task.complete,
+                        complete: this.task.complete
                     });
 
                 }

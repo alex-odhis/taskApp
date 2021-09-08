@@ -16,7 +16,7 @@ export class AuthInterceptor implements HttpInterceptor {
         console.log(`AddHeaderInterceptor - ${req.url}`);
 
         let jsonReq: HttpRequest<any> = req.clone({
-            setHeaders:  { Authorization:`Bearer ${authService.getToken()}`}
+            setHeaders:{ Authorization:`Bearer ${authService.getToken()}`}
         });
 
         return next.handle(jsonReq)
@@ -24,7 +24,6 @@ export class AuthInterceptor implements HttpInterceptor {
                 tap(event => {
                     if (event.type === HttpEventType.Response) {
                         console.log(event.body);
-
                     }
                 })
             )
